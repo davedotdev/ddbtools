@@ -48,6 +48,9 @@ func (da *Data) UpdateSetting(firstName, lastName, userGUID string) error {
   // If the fourth input is true, then it creates a new string for exprStr
 	exprStr := ddbtools.SetEquals(firstName, "firstName", "", true, &upd)
 	exprStr = ddbtools.SetEquals(lastName, "lastName", exprStr, false, &upd)
+	// This SetEquals func isn't too disruptive to normal patterns
+  // and doesn't do any real 'magic', so it's easy to debug
+
 	upd.UpdateExpression = &exprStr
 
   // Do the transaction
