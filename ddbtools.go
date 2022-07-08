@@ -54,7 +54,7 @@ func SetEquals(inputValue interface{}, inputName string, expr string, first bool
 // The reason it needs 'first' is because it will create the expression string with ADD pre-appended.
 // It could be auto detected, but this way means it has hybrid use cases and is easy for brownfield insertion.
 // This function has no intelligence to know if you're incrementing a bool attribute.
-func TransactIncrementValue(inputName string, expr string, first bool, update *dynamodb.UpdateItemInput) string {
+func TransactIncrementValue(inputName string, expr string, first bool, update *types.Update) string {
 
 	ExprNameTemplate := "#%v"
 	// equiv of "#BusinessName"
