@@ -1,4 +1,4 @@
-module ddbtools
+module github.com/davedotdev/ddbtools
 
 go 1.18
 
