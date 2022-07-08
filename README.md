@@ -9,11 +9,12 @@ __SetEquals__
 The SetEquals function makes it easier to create an expression update string and deals with adding AttributeValues to the update map.
 It means your update queries become tider! An example of using it is below.
 
+
+```go
 import (
 	"github.com/davedotdev/ddbtools
 )
 
-```go
 func (da *Data) UpdateSetting(firstName, lastName, userGUID string) error {
 
 	client := dynamodb.NewFromConfig(da.DDBConfig, func(o *dynamodb.Options) {})
