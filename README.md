@@ -4,6 +4,14 @@ This library is a set of Go based AWS SDK V2 helper tools.
 
 Currently it's one tool, but I suspect more will be added over time.
 
+__Installation__
+
+```bash
+# At the time of release, that is 0.1.0
+go get github.com/davedotdev/ddbtools@latest
+```
+
+
 __SetEquals__
 
 The SetEquals function makes it easier to create an expression update string and deals with adding AttributeValues to the update map.
