@@ -2,6 +2,8 @@
 
 This library is a set of Go based AWS SDK V2 helper tools for DynamoDB.
 
+If there is a better way of doing this, please send me a message and I'll adopt that. I did take a look making the best of my Google powers and didn't find anything.
+
 __Installation__
 
 ```bash
