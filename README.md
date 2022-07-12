@@ -119,7 +119,7 @@ func (da *Data) UpdateSetting(firstName, lastName, userGUID string) error {
 }
 ```
 
-
+There is also another version that does non-transaction based increment updates called `IncremenetValue`. The core difference is, it accepts a `dynamodb.UpdateItemInput` as the last argument.
 
 ## Support & Issues
 
