@@ -65,7 +65,7 @@ func (da *Data) UpdateSetting(firstName, lastName, userGUID string) error {
 
 __IncrementValue__
 
-Works in a very similar way, adding `1` to the Number type. Ensure the attribute is a number and not a string, else DynamoDB will error out.
+Works in a very similar way, adding `count` to the Number type. Ensure the attribute is a number and not a string, else DynamoDB will error out when you execute the query.
 
 
 ```go
@@ -100,7 +100,7 @@ func (da *Data) UpdateSetting(firstName, lastName, userGUID string) error {
 	// pass in the Update instance (upd) and the string value of exprStr
 	// If the fourth input is true, then it creates a new string for exprStr
 	// This is the equiv of 'ADD #thingCount :1'
-	exprStr := ddbtools.TransactIncrementValue("thingCount", "", true, &upd)
+	exprStr := ddbtools.TransactIncrementValue(1, "thingCount", "", true, &upd)
 	upd.UpdateExpression = &exprStr	
 
 	// Add upd to the transaction slice

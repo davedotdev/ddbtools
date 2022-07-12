@@ -54,7 +54,7 @@ func SetEquals(inputValue interface{}, inputName string, expr string, first bool
 // The reason it needs 'first' is because it will create the expression string with ADD pre-appended.
 // It could be auto detected, but this way means it has hybrid use cases and is easy for brownfield insertion.
 // This function has no intelligence to know if you're incrementing a bool attribute.
-func TransactIncrementValue(inputName string, expr string, first bool, update *types.Update) string {
+func TransactIncrementValue(count int, inputName string, expr string, first bool, update *types.Update) string {
 
 	ExprNameTemplate := "#%v"
 	// equiv of "#BusinessName"
@@ -76,14 +76,14 @@ func TransactIncrementValue(inputName string, expr string, first bool, update *t
 		update.ExpressionAttributeNames[k] = v
 	}
 
-	update.ExpressionAttributeValues[":inc"] = &types.AttributeValueMemberN{Value: "1"}
+	update.ExpressionAttributeValues[":inc"] = &types.AttributeValueMemberN{Value: fmt.Sprint(count)}
 
 	return exprStr
 }
 
 // IncremementValue accepts an inputName (the DDB attribute name), an expression string, whether
 // it's the first entry and the DDB UpdateItemInput instance. This is the non-transaction version.
-func IncrementValue(inputName string, expr string, first bool, update *dynamodb.UpdateItemInput) string {
+func IncrementValue(count int, inputName string, expr string, first bool, update *dynamodb.UpdateItemInput) string {
 
 	ExprNameTemplate := "#%v"
 	// equiv of "#BusinessName"
@@ -105,7 +105,7 @@ func IncrementValue(inputName string, expr string, first bool, update *dynamodb.
 		update.ExpressionAttributeNames[k] = v
 	}
 
-	update.ExpressionAttributeValues[":inc"] = &types.AttributeValueMemberN{Value: "1"}
+	update.ExpressionAttributeValues[":inc"] = &types.AttributeValueMemberN{Value: fmt.Sprint(count)}
 
 	return exprStr
 }
